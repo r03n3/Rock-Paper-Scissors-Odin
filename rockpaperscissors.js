@@ -35,12 +35,14 @@ function game(){
     let compPoints = 0;
     let humanPoints = 0;
     let ergebnis;
+    let input;
     for (let i = 0; i<5; i++){
-        playerSelection = prompt("Bitte gib Rock / Paper / Scissors ein");
-        ergebnis = play(playerSelectiontoUp(playerSelection), getComputerChoice());
-        if(ergebnis.prototype.includes("gewinnst")){
+        input = prompt("Bitte gib Rock / Paper / Scissors ein");
+        input = capitalize(input);
+        ergebnis = play(input, getComputerChoice());
+        if(ergebnis.includes("gewinnst")){
             humanPoints++;
-        } else if (ergebnis.prototype.includes("verlierst")){
+        } else if (ergebnis.includes("verlierst")){
             compPoints++;
         }
     }
