@@ -34,10 +34,24 @@ function capitalize(text){
 function game(){
     let compPoints = 0;
     let humanPoints = 0;
+    let ergebnis;
     for (let i = 0; i<5; i++){
         playerSelection = prompt("Bitte gib Rock / Paper / Scissors ein");
-        play(playerSelectiontoUp(playerSelection), getComputerChoice());
-
+        ergebnis = play(playerSelectiontoUp(playerSelection), getComputerChoice());
+        if(ergebnis.prototype.includes("gewinnst")){
+            humanPoints++;
+        } else if (ergebnis.prototype.includes("verlierst")){
+            compPoints++;
+        }
     }
+    if (humanPoints<compPoints) {
+        console.log("Oh nein, der Computer hat gewonnen");
+    } else if (humanPoints>compPoints){
+        console.log("Du gewinnst!");
+    }
+     else if (humanPoints==compPoints){
+        console.log("Unentschieden, du musst wohl weiterspielen")
+     }
+     else { console.log("Hier stimmt etwas nicht");}
 }
 
