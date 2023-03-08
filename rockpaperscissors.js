@@ -1,11 +1,13 @@
-function getComputerChoice(){
+function getComputerChoice(){   /** Random choice of an arrayindex with the output Rock, Paper... */
     const values =["Rock", "Paper", "Scissors"];
     return values[Math.floor(Math.random()*values.length)];
+    
 }
 
 function play(playerSelection, computerSelection){
-    const playerSelectiontoUp=capitalize(playerSelection);
-    if (playerSelectiontoUp == computerSelection){
+    const playerSelectiontoUp=capitalize(playerSelection);  /** adding case insensitivity */
+   
+    if (playerSelectiontoUp == computerSelection){ /** various cases which can occur and define different outcomes of the game */
         return "Draw, eine Runde für die Katz";
     } else if (playerSelectiontoUp=="Rock" && computerSelection=="Scissors"){
         return ("Du gewinnst, " + playerSelectiontoUp + " schlägt " + computerSelection);
@@ -21,9 +23,10 @@ function play(playerSelection, computerSelection){
         return ("Du verlierst, " + computerSelection + " schlägt " + playerSelectiontoUp);
     } else 
         return ("Da ist was schief gelaufen");
+
 }
 
-function capitalize(text){
+function capitalize(text){ 
     const firstLetter = text.charAt(0);
     const firstLetterCap = firstLetter.toUpperCase();
     const remainingLetters = text.slice(1).toLowerCase();
@@ -36,7 +39,7 @@ function game(){
     let humanPoints = 0;
     let ergebnis;
     let input;
-    for (let i = 0; i<5; i++){
+    for (let i = 0; i<5; i++){ /** Running the game 5 times after it display the winner depending on gained points */
         input = prompt("Bitte gib Rock / Paper / Scissors ein");
         input = capitalize(input);
         ergebnis = play(input, getComputerChoice());
