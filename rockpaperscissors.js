@@ -5,27 +5,27 @@ function getComputerChoice(){   /** Random choice of an arrayindex with the outp
 }
 
 function play(playerSelection, computerSelection){
-    const playerSelectiontoUp=capitalize(playerSelection);  /** adding case insensitivity */
+    //const playerSelectiontoUp=capitalize(playerSelection);  /** adding case insensitivity */
    
-    if (playerSelectiontoUp == computerSelection){ /** various cases which can occur and define different outcomes of the game */
+    if (playerSelection == computerSelection){ /** various cases which can occur and define different outcomes of the game */
         return "Draw, eine Runde für die Katz";
-    } else if (playerSelectiontoUp=="Rock" && computerSelection=="Scissors"){
-        return ("Du gewinnst, " + playerSelectiontoUp + " schlägt " + computerSelection);
-    } else if (playerSelectiontoUp=="Rock" && computerSelection!="Scissors"){
-        return ("Du verlierst, " + computerSelection + " schlägt " + playerSelectiontoUp);
-    } else if (playerSelectiontoUp=="Paper" && computerSelection=="Rock"){
-        return ("Du gewinnst, " + playerSelectiontoUp + " schlägt " + computerSelection);
-    } else if (playerSelectiontoUp=="Paper" && computerSelection!="Rock"){
-        return ("Du verlierst, " + computerSelection + " schlägt " + playerSelectiontoUp);
-    } else if (playerSelectiontoUp=="Scissors" && computerSelection=="Paper"){
-        return ("Du gewinnst, " + playerSelectiontoUp + " schlägt " + computerSelection);
-    } else if (playerSelectiontoUp=="Scissors" && computerSelection!="Paper"){
-        return ("Du verlierst, " + computerSelection + " schlägt " + playerSelectiontoUp);
+    } else if (playerSelection=="Rock" && computerSelection=="Scissors"){
+        return ("Du gewinnst, " + playerSelection + " schlägt " + computerSelection);
+    } else if (playerSelection=="Rock" && computerSelection!="Scissors"){
+        return ("Du verlierst, " + computerSelection + " schlägt " + playerSelection);
+    } else if (playerSelection=="Paper" && computerSelection=="Rock"){
+        return ("Du gewinnst, " + playerSelection + " schlägt " + computerSelection);
+    } else if (playerSelection=="Paper" && computerSelection!="Rock"){
+        return ("Du verlierst, " + computerSelection + " schlägt " + playerSelection);
+    } else if (playerSelection=="Scissors" && computerSelection=="Paper"){
+        return ("Du gewinnst, " + playerSelection + " schlägt " + computerSelection);
+    } else if (playerSelection=="Scissors" && computerSelection!="Paper"){
+        return ("Du verlierst, " + computerSelection + " schlägt " + playerSelection);
     } else 
         return ("Da ist was schief gelaufen");
 
 }
-
+/* Not used anymore since there is no manual text input anymore, instead we rely on pressing buttons
 function capitalize(text){ 
     const firstLetter = text.charAt(0);
     const firstLetterCap = firstLetter.toUpperCase();
@@ -33,30 +33,88 @@ function capitalize(text){
     const capitalizedWord = firstLetterCap + remainingLetters
     return capitalizedWord;
 }
-
+*/
 function game(){
     let compPoints = 0;
     let humanPoints = 0;
-    let ergebnis;
     let input;
-    for (let i = 0; i<5; i++){ /** Running the game 5 times after it display the winner depending on gained points */
-        input = prompt("Bitte gib Rock / Paper / Scissors ein");
+    const btn1 = document.querySelector("#rock");
+    const btn2 = document.querySelector("#paper");
+    const btn3 = document.querySelector("#scissors");
+
+    //adding buttonfunctions so the playerchoice is saved on a mouseclick
+    btn1.addEventListener("click", () => { input = "Rock";
+    console.log("ROCK");
+    const result = play(input,getComputerChoice());
+    if(result.includes("gewinnst")){
+        humanPoints++;
+        } else if (result.includes("verlierst")){
+        compPoints++;
+        } 
+        console.log(result);
+        console.log(compPoints);
+        console.log(humanPoints);
+        if (humanPoints<compPoints && compPoints==5) {
+            console.log("Oh nein, der Computer hat gewonnen");
+        } else if (humanPoints>compPoints && humanPoints==5){
+            console.log("Du gewinnst!");
+        }
+         else if(humanPoints <= 0 && compPoints <=0) { console.log("Hier stimmt etwas nicht");}    
+    }
+    );
+
+    btn2.addEventListener("click", () => { input = "Paper"; 
+    const result = play(input,getComputerChoice());
+    if(result.includes("gewinnst")){
+        humanPoints++;
+        } else if (result.includes("verlierst")){
+        compPoints++;
+        }
+        console.log(result);
+        console.log(compPoints);
+        console.log(humanPoints);
+        if (humanPoints<compPoints && compPoints==5) {
+            console.log("Oh nein, der Computer hat gewonnen");
+        } else if (humanPoints>compPoints && humanPoints==5){
+            console.log("Du gewinnst!");
+        }
+         else if(humanPoints <= 0 && compPoints <=0) { console.log("Hier stimmt etwas nicht");}    
+    }
+    );
+
+    btn3.addEventListener("click", () => { input = "Scissors";
+    const result = play(input,getComputerChoice());
+    if(result.includes("gewinnst")){
+        humanPoints++;
+        } else if (result.includes("verlierst")){
+        compPoints++;
+        }
+        console.log(result);
+        console.log(compPoints);
+        console.log(humanPoints);
+        if (humanPoints<compPoints && compPoints==5) {
+            console.log("Oh nein, der Computer hat gewonnen");
+        } else if (humanPoints>compPoints && humanPoints==5){
+            console.log("Du gewinnst!");
+        }
+         else if(humanPoints <= 0 && compPoints <=0) { console.log("Hier stimmt etwas nicht");}    
+    } );
+
+
+
+
+ /*   for (let i = 0; i<5; i++){ /** Running the game 5 times after it display the winner depending on gained points */
+   /*     input = prompt("Bitte gib Rock / Paper / Scissors ein");
         input = capitalize(input);
         ergebnis = play(input, getComputerChoice());
         if(ergebnis.includes("gewinnst")){
             humanPoints++;
         } else if (ergebnis.includes("verlierst")){
             compPoints++;
-        }
-    }
-    if (humanPoints<compPoints) {
-        console.log("Oh nein, der Computer hat gewonnen");
-    } else if (humanPoints>compPoints){
-        console.log("Du gewinnst!");
-    }
-     else if (humanPoints==compPoints){
-        console.log("Unentschieden, du musst wohl weiterspielen")
-     }
-     else { console.log("Hier stimmt etwas nicht");}
+        }*/
+        
+    //}
+
 }
 
+game();
