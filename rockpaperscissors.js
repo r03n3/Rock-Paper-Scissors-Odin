@@ -41,6 +41,7 @@ function game(){
     const btn1 = document.querySelector("#rock");
     const btn2 = document.querySelector("#paper");
     const btn3 = document.querySelector("#scissors");
+    const rslt = document.querySelector("#rslt");
 
     //adding buttonfunctions so the playerchoice is saved on a mouseclick
     btn1.addEventListener("click", () => { input = "Rock";
@@ -48,16 +49,27 @@ function game(){
     const result = play(input,getComputerChoice());
     if(result.includes("gewinnst")){
         humanPoints++;
+        rslt.textContent="Der Computer hat " + compPoints + " Punkte und du hast " + humanPoints + " Punkte.";
         } else if (result.includes("verlierst")){
         compPoints++;
-        } 
+        rslt.textContent="Der Computer hat " + compPoints + " Punkte und du hast " + humanPoints + " Punkte.";
+        }
+        else{
+            rslt.textContent="Der Computer hat " + compPoints + " Punkte und du hast " + humanPoints + " Punkte.";
+        }
         console.log(result);
         console.log(compPoints);
         console.log(humanPoints);
         if (humanPoints<compPoints && compPoints==5) {
             console.log("Oh nein, der Computer hat gewonnen");
+            rslt.textContent="Oh nein, der Computer hat gewonnen";
+            compPoints=0;
+            humanPoints=0;
         } else if (humanPoints>compPoints && humanPoints==5){
             console.log("Du gewinnst!");
+            rslt.textContent="Du gewinnst!";
+            compPoints=0;
+            humanPoints=0;
         }
          else if(humanPoints <= 0 && compPoints <=0) { console.log("Hier stimmt etwas nicht");}    
     }
@@ -67,16 +79,27 @@ function game(){
     const result = play(input,getComputerChoice());
     if(result.includes("gewinnst")){
         humanPoints++;
+        rslt.textContent="Der Computer hat " + compPoints + " Punkte und du hast " + humanPoints + " Punkte.";
         } else if (result.includes("verlierst")){
         compPoints++;
+        rslt.textContent="Der Computer hat " + compPoints + " Punkte und du hast " + humanPoints + " Punkte.";
+        }
+        else{
+            rslt.textContent="Der Computer hat " + compPoints + " Punkte und du hast " + humanPoints + " Punkte.";
         }
         console.log(result);
         console.log(compPoints);
         console.log(humanPoints);
         if (humanPoints<compPoints && compPoints==5) {
             console.log("Oh nein, der Computer hat gewonnen");
+            rslt.textContent="Oh nein, der Computer hat gewonnen";
+            compPoints=0;
+            humanPoints=0;
         } else if (humanPoints>compPoints && humanPoints==5){
             console.log("Du gewinnst!");
+            rslt.textContent="Du gewinnst!";
+            compPoints=0;
+            humanPoints=0;
         }
          else if(humanPoints <= 0 && compPoints <=0) { console.log("Hier stimmt etwas nicht");}    
     }
@@ -86,18 +109,29 @@ function game(){
     const result = play(input,getComputerChoice());
     if(result.includes("gewinnst")){
         humanPoints++;
+        rslt.textContent="Der Computer hat " + compPoints + " Punkte und du hast " + humanPoints + " Punkte.";
         } else if (result.includes("verlierst")){
         compPoints++;
+        rslt.textContent="Der Computer hat " + compPoints + " Punkte und du hast " + humanPoints + " Punkte.";
+        }
+        else{
+            rslt.textContent="Der Computer hat " + compPoints + " Punkte und du hast " + humanPoints + " Punkte.";
         }
         console.log(result);
         console.log(compPoints);
         console.log(humanPoints);
         if (humanPoints<compPoints && compPoints==5) {
             console.log("Oh nein, der Computer hat gewonnen");
+            rslt.textContent="Oh nein, der Computer hat gewonnen";
+            compPoints=0;
+            humanPoints=0;
         } else if (humanPoints>compPoints && humanPoints==5){
             console.log("Du gewinnst!");
+            rslt.textContent="Du gewinnst!";
+            compPoints=0;
+            humanPoints=0;
         }
-         else if(humanPoints <= 0 && compPoints <=0) { console.log("Hier stimmt etwas nicht");}    
+         else if(humanPoints < 0 && compPoints <0) { console.log("Hier stimmt etwas nicht");}    
     } );
 
 
